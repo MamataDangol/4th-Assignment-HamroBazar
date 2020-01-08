@@ -22,7 +22,7 @@ public class AgreementActivity extends AppCompatActivity {
         chkTerms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AgreementActivity.this, Terms.class);
+                Intent intent = new Intent(AgreementActivity.this, TermsActivity.class);
                 startActivity(intent);
                 chkTerms.setChecked(true);
                 chkTerms.setEnabled(false);
@@ -34,7 +34,7 @@ public class AgreementActivity extends AppCompatActivity {
         chkSafety.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AgreementActivity.this, Safety.class);
+                Intent intent = new Intent(AgreementActivity.this, SafetyActivity.class);
                 startActivity(intent);
                 chkSafety.setChecked(true);
                 chkSafety.setEnabled(false);
