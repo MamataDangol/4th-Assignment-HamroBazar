@@ -30,7 +30,7 @@ public class DashboardActivity extends AppCompatActivity {
 
 
         ImageSliderAdapter adapter = new ImageSliderAdapter(this);
-        viewPager.setAdapter (adapter);
+        viewPager.setAdapter(adapter);
 
 
         //Indicator

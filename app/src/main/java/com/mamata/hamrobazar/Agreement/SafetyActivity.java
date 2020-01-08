@@ -1,10 +1,12 @@
-package com.mamata.hamrobazar;
+package com.mamata.hamrobazar.Agreement;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.mamata.hamrobazar.R;
 
 public class SafetyActivity extends AppCompatActivity {
     private WebView webViewSafety;

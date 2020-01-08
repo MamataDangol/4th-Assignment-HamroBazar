@@ -1,19 +1,21 @@
 package com.mamata.hamrobazar.Adapter;
-//test
-//test2
+
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
+import androidx.viewpager.widget.PagerAdapter;
 import androidx.annotation.NonNull;
 
 import com.mamata.hamrobazar.R;
 
-public class ImageSliderAdapter extends pagerAdapter {
+
+//import com.mamata.hamrobazar.R;
+
+public class ImageSliderAdapter extends PagerAdapter {
 
     private Context mContext;
-    private int[] mImageIds = new int[]{R.drawable.birthday, R.drawable.birthdayy, R.drawable.cake_maker,R.drawable.birthdayy};
+    private int[] mImageIds = new int[]{R.drawable.a, R.drawable.b, R.drawable.c};
 
     private int custom_position = 0;
 
