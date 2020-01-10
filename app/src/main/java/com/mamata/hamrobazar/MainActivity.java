@@ -14,7 +14,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toolbar;
 
+import com.mamata.hamrobazar.Adapter.CategoryAdapter;
 import com.mamata.hamrobazar.Adapter.ImageSliderAdapter;
+import com.mamata.hamrobazar.Adapter.ProductAdapter;
 import com.mamata.hamrobazar.model.Category;
 import com.mamata.hamrobazar.model.Products;
 
@@ -107,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         //------------Category Recycler View------------//
         rvCategory = findViewById(R.id.rvCategory);
 
-        //Create a list of category
+
         List<Category> categoryList = new ArrayList<>();
 
         categoryList.add(new Category(R.drawable.post_free_ad, "Post FREE Ad"));
