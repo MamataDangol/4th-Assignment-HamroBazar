@@ -4,18 +4,16 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import androidx.viewpager.widget.PagerAdapter;
+
 import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
 
 import com.mamata.hamrobazar.R;
-
-
-//import com.mamata.hamrobazar.R;
 
 public class ImageSliderAdapter extends PagerAdapter {
 
     private Context mContext;
-    private int[] mImageIds = new int[]{R.drawable.a, R.drawable.b, R.drawable.c};
+    private int[] mImageIds = new int[]{R.drawable.cars, R.drawable.bikes, R.drawable.tables};
 
     private int custom_position = 0;
 
@@ -23,6 +21,7 @@ public class ImageSliderAdapter extends PagerAdapter {
     {
         mContext = context;
     }
+
 
     @Override
     public int getCount() {
