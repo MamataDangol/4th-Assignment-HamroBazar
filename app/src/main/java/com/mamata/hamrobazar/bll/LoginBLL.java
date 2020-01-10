@@ -1,15 +1,14 @@
 package com.mamata.hamrobazar.bll;
 
-import com.deepak.hamrobazzar.api.UsersAPI;
-import com.deepak.hamrobazzar.serverresponse.SignUpResponse;
-import com.deepak.hamrobazzar.url.Url;
+import android.widget.Toast;
 import com.mamata.hamrobazar.api.UsersAPI;
-
+import com.mamata.hamrobazar.serverresponse.SignUpResponse;
+import com.mamata.hamrobazar.url.Url;
 import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Response;
-import retrofit2.http.Url;
+
 
 public class LoginBLL {
 
