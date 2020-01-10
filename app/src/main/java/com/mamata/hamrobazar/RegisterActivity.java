@@ -44,7 +44,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-class Register extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     private EditText etReEmail, etReFullName, etRePassword, etReConPassword, etRePhone, etReMobPhone;
     private EditText etReAddressOne, etReAddressTwo;
@@ -95,7 +95,7 @@ class Register extends AppCompatActivity {
                         signUp();
                     }
                 } else {
-                    Toast.makeText(Register.this, "Password does not match", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Password does not match", Toast.LENGTH_SHORT).show();
                     etRePassword.requestFocus();
                     return;
                 }
@@ -121,7 +121,7 @@ class Register extends AppCompatActivity {
         tvRegisterTerms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Register.this, TermsActivity.class);
+                Intent intent = new Intent(RegisterActivity.this, TermsActivity.class);
                 startActivity(intent);
             }
         });
@@ -209,17 +209,17 @@ class Register extends AppCompatActivity {
             @Override
             public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(Register.this, "Code " + response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Code " + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Toast.makeText(Register.this, "Registered", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, "Registered", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<SignUpResponse> call, Throwable t) {
-                Toast.makeText(Register.this, "Error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, "Error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
+//
     }
 }

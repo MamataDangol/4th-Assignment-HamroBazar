@@ -13,7 +13,7 @@ import com.mamata.hamrobazar.R;
 public class ImageSliderAdapter extends PagerAdapter {
 
     private Context mContext;
-    private int[] mImageIds = new int[]{R.drawable.cars, R.drawable.bikes, R.drawable.tables};
+    private int[] mImageIds = new int[]{R.drawable.a, R.drawable.b, R.drawable.c};
 
     private int custom_position = 0;
 

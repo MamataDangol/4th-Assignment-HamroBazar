@@ -12,16 +12,23 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.mamata.hamrobazar.Adapter.CategoryAdapter;
 import com.mamata.hamrobazar.Adapter.ImageSliderAdapter;
 import com.mamata.hamrobazar.Adapter.ProductAdapter;
+import com.mamata.hamrobazar.api.ProductAPI;
 import com.mamata.hamrobazar.model.Category;
 import com.mamata.hamrobazar.model.Products;
+import com.mamata.hamrobazar.url.Url;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar mainToolbar;
@@ -133,46 +140,37 @@ public class MainActivity extends AppCompatActivity {
         //------------Trending Product Recycler View------------//
         rvTrendingProducts = findViewById(R.id.rvTrendingProducts);
 
-        //Create a list of category
-        List<Products> productsList = new ArrayList<>();
-
-        productsList.add(new Products("Iphone 6s 16gb", R.drawable.iphone, "Rs.10,000", "(Used)"));
-        productsList.add(new Products("21 gear black Mountain Bike", R.drawable.mountain_bike, "Rs.10,000", "(Used)"));
-        productsList.add(new Products("Iphone 6s 16gb", R.drawable.iphone, "Rs.10,000", "(Used)"));
-        productsList.add(new Products("21 gear black Mountain Bike", R.drawable.mountain_bike, "Rs.10,000", "(Used)"));productsList.add(new Products("Iphone 6s 16gb", R.drawable.iphone, "Rs.10,000", "(Used)"));
-        productsList.add(new Products("21 gear black Mountain Bike", R.drawable.mountain_bike, "Rs.10,000", "(Used)"));
+      showAllProducts();
 
 
-        ProductAdapter productAdapter= new ProductAdapter(productsList,this);
-        rvTrendingProducts.setAdapter(productAdapter);
-        rvTrendingProducts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
-        //------------Ending Category Recycler View------------//
+    }
 
 
+    private void showAllProducts() {
 
+        ProductAPI productAPI = Url.getInstance().create((ProductAPI.class));
 
+        Call<List<Products>> proListCall = productAPI.getAllProducts();
 
-        //------------Recently Listed Ads Product Recycler View------------//
-        rvRecentlyListedAds = findViewById(R.id.rvRecentlyListedAds);
+        proListCall.enqueue(new Callback<List<Products>>() {
+            @Override
+            public void onResponse(Call<List<Products>> call, Response<List<Products>> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(MainActivity.this, "Error code " + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-        //Create a list of category
-        List<Products> recentProductsList = new ArrayList<>();
+                List<Products> productsList = response.body();
+                ProductAdapter productAdapter = new ProductAdapter(productsList, MainActivity.this);
+                rvTrendingProducts.setAdapter(productAdapter);
+                rvTrendingProducts.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
+            }
 
-        recentProductsList.add(new Products("21 gear black Mountain Bike", R.drawable.mountain_bike, "Rs.10,000", "(Used)"));
-        recentProductsList.add(new Products("Iphone 6s 16gb", R.drawable.iphone, "Rs.10,000", "(Used)"));
-        recentProductsList.add(new Products("21 gear black Mountain Bike", R.drawable.mountain_bike, "Rs.10,000", "(Used)"));productsList.add(new Products("Iphone 6s 16gb", R.drawable.iphone, "Rs.10,000", "(Used)"));
-        recentProductsList.add(new Products("Iphone 6s 16gb", R.drawable.iphone, "Rs.10,000", "(Used)"));
-        recentProductsList.add(new Products("21 gear black Mountain Bike", R.drawable.mountain_bike, "Rs.10,000", "(Used)"));
-        recentProductsList.add(new Products("Iphone 6s 16gb", R.drawable.iphone, "Rs.10,000", "(Used)"));
+            @Override
+            public void onFailure(Call<List<Products>> call, Throwable t) {
 
-
-        ProductAdapter recentProductAdapter= new ProductAdapter(recentProductsList,this);
-        rvRecentlyListedAds.setAdapter(recentProductAdapter);
-        rvRecentlyListedAds.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
-        //------------Ending Category Recycler View------------//
-
+            }
+        });
 
     }
 
