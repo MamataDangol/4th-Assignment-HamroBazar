@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
         viewPager = findViewById(R.id.imageSlider);
 
         //For Indicators
